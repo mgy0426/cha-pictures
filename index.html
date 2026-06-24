@@ -19,9 +19,7 @@
     --radius: 16px;
     --radius-sm: 10px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -30,34 +28,19 @@
     max-width: 480px;
     margin: 0 auto;
   }
-
   .header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
     padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
   }
   .header-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
   .header-logo span { color: var(--accent); }
-  .header-right { display: flex; gap: 10px; align-items: center; }
-
   .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 12px 20px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: all 0.15s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 12px 20px; border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s;
   }
   .btn-accent { background: var(--accent); color: #0f0f0f; }
   .btn-accent:active { background: var(--accent-dim); transform: scale(0.97); }
@@ -66,18 +49,13 @@
   .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
   .btn-sm { padding: 8px 14px; font-size: 13px; }
   .btn-full { width: 100%; }
-
   .screen { display: none; }
   .screen.active { display: block; }
 
   /* LOGIN */
   #screen-login {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 24px;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 40px 24px;
   }
   #screen-login.active { display: flex; }
   .login-emoji { font-size: 56px; margin-bottom: 16px; }
@@ -86,15 +64,9 @@
   .login-sub { color: var(--text-muted); font-size: 14px; margin-bottom: 40px; }
   .login-form { width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 12px; }
   .input {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text);
-    font-size: 16px;
-    padding: 14px 16px;
-    width: 100%;
-    outline: none;
-    transition: border 0.15s;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--text);
+    font-size: 16px; padding: 14px 16px; width: 100%; outline: none; transition: border 0.15s;
   }
   .input:focus { border-color: var(--accent); }
   .login-hint { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 4px; }
@@ -102,311 +74,214 @@
   /* ADMIN */
   #screen-admin { padding: 20px; }
   .section-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 14px;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px;
   }
   .create-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
-    margin-bottom: 28px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px; margin-bottom: 28px;
+    display: flex; flex-direction: column; gap: 10px;
   }
+  .create-row { display: flex; gap: 10px; align-items: center; }
   .create-card .input { flex: 1; font-size: 15px; padding: 12px 14px; }
   .album-list { display: flex; flex-direction: column; gap: 12px; }
   .album-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
   }
   .album-card-top {
-    padding: 16px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 16px 18px; display: flex; align-items: center; justify-content: space-between;
   }
   .album-info { flex: 1; min-width: 0; }
   .album-name { font-size: 16px; font-weight: 700; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .album-meta { font-size: 12px; color: var(--text-muted); }
+  .album-code { font-size: 11px; color: var(--accent); margin-top: 2px; }
   .album-actions { display: flex; gap: 8px; flex-shrink: 0; }
   .album-panel {
-    display: none;
-    border-top: 1px solid var(--border);
-    padding: 16px 18px;
-    background: var(--surface2);
+    display: none; border-top: 1px solid var(--border);
+    padding: 16px 18px; background: var(--surface2);
   }
   .album-panel.open { display: block; }
   .panel-actions { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
   .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 4px; border-radius: var(--radius-sm); overflow: hidden;
   }
-  .photo-thumb { aspect-ratio: 1; object-fit: cover; width: 100%; cursor: pointer; transition: opacity 0.15s; }
-  .photo-thumb:active { opacity: 0.7; }
+  .photo-thumb { aspect-ratio: 1; object-fit: cover; width: 100%; cursor: pointer; }
   .photo-thumb-wrap { position: relative; }
   .photo-delete-btn {
-    position: absolute;
-    top: 4px; right: 4px;
-    background: rgba(0,0,0,0.7);
-    border: none;
-    border-radius: 50%;
-    width: 24px; height: 24px;
-    color: #fff; font-size: 14px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
+    position: absolute; top: 4px; right: 4px;
+    background: rgba(0,0,0,0.7); border: none; border-radius: 50%;
+    width: 24px; height: 24px; color: #fff; font-size: 14px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
   }
+  .upload-progress {
+    background: var(--surface2); border-radius: var(--radius-sm);
+    height: 4px; margin-top: 12px; overflow: hidden; display: none;
+  }
+  .upload-progress.show { display: block; }
+  .upload-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
 
   /* QR 모달 */
   .modal-bg {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 200;
-    align-items: flex-end;
-    justify-content: center;
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85); z-index: 200;
+    align-items: flex-end; justify-content: center;
   }
   .modal-bg.open { display: flex; }
   .modal {
-    background: var(--surface);
-    border-radius: var(--radius) var(--radius) 0 0;
-    padding: 28px 24px 40px;
-    width: 100%;
-    max-width: 480px;
-    text-align: center;
+    background: var(--surface); border-radius: var(--radius) var(--radius) 0 0;
+    padding: 28px 24px 40px; width: 100%; max-width: 480px; text-align: center;
   }
   .modal-handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 24px; }
   .modal-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
   .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
-  #qr-container {
-    background: #fff;
-    border-radius: var(--radius-sm);
-    padding: 16px;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
+  #qr-container { background: #fff; border-radius: var(--radius-sm); padding: 16px; display: inline-block; margin-bottom: 20px; }
   .modal-url {
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    padding: 12px 14px;
-    font-size: 12px;
-    color: var(--text-muted);
-    word-break: break-all;
-    margin-bottom: 20px;
-    text-align: left;
+    background: var(--surface2); border-radius: var(--radius-sm);
+    padding: 12px 14px; font-size: 12px; color: var(--text-muted);
+    word-break: break-all; margin-bottom: 20px; text-align: left;
   }
   .modal-btns { display: flex; gap: 10px; }
+
+  /* INVITE (친구용 초대코드 입력) */
+  #screen-invite {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 40px 24px;
+  }
+  #screen-invite.active { display: flex; }
+  .invite-emoji { font-size: 48px; margin-bottom: 16px; }
+  .invite-title { font-size: 24px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 6px; text-align: center; }
+  .invite-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; text-align: center; }
+  .invite-form { width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 12px; }
 
   /* GALLERY */
   #screen-gallery { padding: 20px; padding-bottom: 120px; }
   .gallery-header { margin-bottom: 16px; }
   .gallery-title { font-size: 26px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 4px; }
   .gallery-count { font-size: 13px; color: var(--text-muted); }
-
-  /* 갤러리 툴바 */
   .gallery-toolbar {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-    align-items: center;
+    display: flex; gap: 8px; margin-bottom: 12px; align-items: center;
   }
-  .select-count-badge {
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 700;
-    margin-left: auto;
-    min-width: 60px;
-    text-align: right;
-  }
-
+  .select-count-badge { font-size: 13px; color: var(--accent); font-weight: 700; margin-left: auto; min-width: 60px; text-align: right; }
   .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    margin-bottom: 16px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 3px; border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 16px;
   }
-  .gallery-item {
-    aspect-ratio: 1;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.15s;
-    pointer-events: none;
-  }
-
-  /* 선택됐을 때 */
+  .gallery-item { aspect-ratio: 1; position: relative; overflow: hidden; cursor: pointer; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.15s; pointer-events: none; }
   .gallery-item.selected img { opacity: 0.55; }
   .gallery-item.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 6px; right: 6px;
-    background: var(--accent);
-    color: #0f0f0f;
-    font-size: 13px;
-    font-weight: 800;
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    content: '✓'; position: absolute; top: 6px; right: 6px;
+    background: var(--accent); color: #0f0f0f; font-size: 13px; font-weight: 800;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
   }
-
-  /* 하단 고정 다운로드 바 */
   .download-bar {
-    position: fixed;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 480px;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 14px 20px 32px;
-    display: flex;
-    gap: 10px;
-    z-index: 150;
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 480px;
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 14px 20px 32px; display: flex; gap: 10px; z-index: 150;
   }
 
-  /* 라이트박스 */
+  /* 업로드 모달 */
+  .upload-modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85); z-index: 200;
+    align-items: flex-end; justify-content: center;
+  }
+  .upload-modal.open { display: flex; }
+  .upload-modal-inner {
+    background: var(--surface); border-radius: var(--radius) var(--radius) 0 0;
+    padding: 28px 24px 40px; width: 100%; max-width: 480px;
+  }
+  .upload-modal-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .upload-modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+  .upload-drop-area {
+    border: 2px dashed var(--border); border-radius: var(--radius-sm);
+    padding: 32px 20px; text-align: center; cursor: pointer;
+    margin-bottom: 16px; transition: border-color 0.15s;
+  }
+  .upload-drop-area:active { border-color: var(--accent); }
+  .upload-drop-icon { font-size: 32px; margin-bottom: 8px; }
+  .upload-drop-text { font-size: 14px; color: var(--text-muted); }
+  input[type="file"] { display: none; }
+
+  /* LIGHTBOX */
   .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: #000;
-    z-index: 300;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: none; position: fixed; inset: 0; background: #000; z-index: 300;
+    flex-direction: column; align-items: center; justify-content: center;
   }
   .lightbox.open { display: flex; }
   .lightbox-img { max-width: 100%; max-height: 80vh; object-fit: contain; }
   .lightbox-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    position: fixed; bottom: 0; left: 0; right: 0;
     background: linear-gradient(transparent, rgba(0,0,0,0.9));
-    padding: 20px 24px 36px;
-    display: flex;
-    gap: 12px;
+    padding: 20px 24px 36px; display: flex; gap: 12px;
   }
   .lightbox-close {
-    position: fixed;
-    top: 20px; right: 20px;
-    background: rgba(255,255,255,0.15);
-    border: none;
-    border-radius: 50%;
-    width: 40px; height: 40px;
-    color: #fff; font-size: 20px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
+    position: fixed; top: 20px; right: 20px;
+    background: rgba(255,255,255,0.15); border: none; border-radius: 50%;
+    width: 40px; height: 40px; color: #fff; font-size: 20px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
   }
 
-  /* 업로드 프로그레스 */
-  .upload-progress {
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    height: 4px;
-    margin-top: 12px;
-    overflow: hidden;
-    display: none;
-  }
-  .upload-progress.show { display: block; }
-  .upload-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
-
-  /* 토스트 */
   .toast {
-    position: fixed;
-    bottom: 100px;
-    left: 50%;
+    position: fixed; bottom: 100px; left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--accent);
-    color: #0f0f0f;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 12px 22px;
-    border-radius: 99px;
-    z-index: 999;
-    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
-    white-space: nowrap;
+    background: var(--accent); color: #0f0f0f;
+    font-size: 14px; font-weight: 600; padding: 12px 22px;
+    border-radius: 99px; z-index: 999;
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1); white-space: nowrap;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
-
   .empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
   .empty-icon { font-size: 40px; margin-bottom: 12px; }
   .empty-text { font-size: 14px; }
   .loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-    gap: 12px;
-    color: var(--text-muted);
-    font-size: 14px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 200px; gap: 12px;
+    color: var(--text-muted); font-size: 14px;
   }
   .spinner {
-    width: 28px; height: 28px;
-    border: 2px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
+    width: 28px; height: 28px; border: 2px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
     animation: spin 0.7s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   .logout-btn { background: none; border: none; color: var(--text-muted); font-size: 13px; cursor: pointer; padding: 4px 8px; }
-  .upload-area {
-    border: 2px dashed var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 14px;
-  }
-  input[type="file"] { display: none; }
 </style>
 </head>
 <body>
 
-<!-- 로그인 -->
+<!-- 관리자 로그인 -->
 <div id="screen-login" class="screen active">
   <div class="login-emoji">📷</div>
   <div class="login-title">cha<span>_pictures</span></div>
   <div class="login-sub">관리자 로그인</div>
   <div class="login-form">
-    <input class="input" type="password" id="login-pw" placeholder="비밀번호 입력" />
+    <input class="input" type="password" id="login-pw" placeholder="관리자 비밀번호" />
     <button class="btn btn-accent btn-full" onclick="doLogin()">입장하기</button>
-    <div class="login-hint">친구들은 QR코드로 접속해요 🙂</div>
+    <div class="login-hint">초대코드가 있다면 QR코드로 접속하세요 🙂</div>
   </div>
 </div>
 
-<!-- 관리자 -->
+<!-- 관리자 화면 -->
 <div id="screen-admin" class="screen">
   <div class="header">
     <div class="header-logo">cha<span>_pictures</span></div>
-    <div class="header-right">
-      <button class="logout-btn" onclick="doLogout()">로그아웃</button>
-    </div>
+    <button class="logout-btn" onclick="doLogout()">로그아웃</button>
   </div>
   <div style="padding: 20px;">
     <div class="section-title">새 앨범 만들기</div>
     <div class="create-card">
-      <input class="input" type="text" id="album-name-input" placeholder="앨범 이름 (예: 차예, 지민이)" />
-      <button class="btn btn-accent btn-sm" onclick="createAlbum()">만들기</button>
+      <div class="create-row">
+        <input class="input" type="text" id="album-name-input" placeholder="앨범 이름 (예: 제주도 여행)" />
+      </div>
+      <div class="create-row">
+        <input class="input" type="text" id="album-code-input" placeholder="초대코드 (예: jeju2024)" />
+        <button class="btn btn-accent btn-sm" onclick="createAlbum()">만들기</button>
+      </div>
     </div>
     <div class="section-title">앨범 목록</div>
     <div id="album-list" class="album-list">
@@ -415,34 +290,57 @@
   </div>
 </div>
 
+<!-- 친구용 초대코드 입력 -->
+<div id="screen-invite" class="screen">
+  <div class="invite-emoji">🔑</div>
+  <div class="invite-title" id="invite-title">초대코드를 입력해주세요</div>
+  <div class="invite-sub">초대코드를 입력하면<br>사진을 올리고 받을 수 있어요</div>
+  <div class="invite-form">
+    <input class="input" type="text" id="invite-code-input" placeholder="초대코드 입력" style="text-align:center;font-size:20px;letter-spacing:2px;" />
+    <button class="btn btn-accent btn-full" onclick="verifyCode()">입장하기</button>
+  </div>
+</div>
+
 <!-- 갤러리 (친구용) -->
 <div id="screen-gallery" class="screen">
   <div class="header">
     <div class="header-logo">cha<span>_pictures</span></div>
+    <button class="btn btn-accent btn-sm" onclick="openUploadModal()">📸 올리기</button>
   </div>
   <div style="padding: 20px; padding-bottom: 120px;">
     <div class="gallery-header">
       <div class="gallery-title" id="gallery-title">앨범</div>
       <div class="gallery-count" id="gallery-count">사진 불러오는 중...</div>
     </div>
-
-    <!-- 툴바 -->
     <div class="gallery-toolbar" id="gallery-toolbar" style="display:none">
-      <span style="font-size:12px;color:var(--text-muted)">꾹 누르면 선택돼요</span>
+      <span style="font-size:12px;color:var(--text-muted)" id="toolbar-hint">꾹 누르면 선택돼요</span>
       <button class="btn btn-ghost btn-sm" id="select-all-btn" onclick="selectAll()" style="display:none">전체선택</button>
-      <button class="btn btn-danger btn-sm" id="select-cancel-btn" onclick="toggleSelectMode()" style="display:none">선택취소</button>
+      <button class="btn btn-danger btn-sm" id="select-cancel-btn" onclick="cancelSelect()" style="display:none">선택취소</button>
       <span class="select-count-badge" id="select-count-badge"></span>
     </div>
-
     <div id="gallery-grid" class="gallery-grid">
       <div class="loading" style="grid-column:span 3"><div class="spinner"></div></div>
     </div>
   </div>
-
-  <!-- 하단 다운로드 바 -->
-  <div class="download-bar" id="download-bar">
+  <div class="download-bar">
     <button class="btn btn-ghost btn-full" onclick="downloadAll()">📥 전체 저장</button>
     <button class="btn btn-accent btn-full" id="download-selected-btn" onclick="downloadSelected()" style="display:none">선택 저장 (<span id="selected-count">0</span>)</button>
+  </div>
+</div>
+
+<!-- 업로드 모달 (친구용) -->
+<div class="upload-modal" id="upload-modal">
+  <div class="upload-modal-inner">
+    <div class="modal-handle" style="width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 24px;"></div>
+    <div class="upload-modal-title">📸 사진 올리기</div>
+    <div class="upload-modal-sub">익명으로 업로드돼요. 여러 장 한번에 선택 가능!</div>
+    <label class="upload-drop-area" for="friend-file-input">
+      <div class="upload-drop-icon">🖼️</div>
+      <div class="upload-drop-text">여기를 눌러 사진 선택</div>
+    </label>
+    <input type="file" id="friend-file-input" multiple accept="image/*" onchange="friendUpload(event)">
+    <div class="upload-progress" id="friend-progress"><div class="upload-bar" id="friend-bar"></div></div>
+    <button class="btn btn-ghost btn-full" onclick="closeUploadModal()" style="margin-top:12px">취소</button>
   </div>
 </div>
 
@@ -451,7 +349,7 @@
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="qr-modal-title">QR 코드</div>
-    <div class="modal-sub">친구들에게 이 QR을 보내세요</div>
+    <div class="modal-sub">초대코드와 함께 QR을 공유하세요</div>
     <div id="qr-container"></div>
     <div class="modal-url" id="qr-url"></div>
     <div class="modal-btns">
@@ -501,8 +399,16 @@ async function getPhotos(albumId) {
   const res = await sbFetch(`/rest/v1/photos?album_id=eq.${albumId}&order=created_at.asc`);
   return res.json();
 }
-async function insertAlbum(name) {
-  const res = await sbFetch('/rest/v1/albums', { method: 'POST', body: JSON.stringify({ name }) });
+async function getAlbumByCode(code) {
+  const res = await sbFetch(`/rest/v1/albums?invite_code=eq.${encodeURIComponent(code)}&select=*`);
+  const data = await res.json();
+  return data[0] || null;
+}
+async function insertAlbum(name, inviteCode) {
+  const res = await sbFetch('/rest/v1/albums', {
+    method: 'POST',
+    body: JSON.stringify({ name, invite_code: inviteCode })
+  });
   const data = await res.json();
   return data[0];
 }
@@ -510,7 +416,10 @@ async function deleteAlbum(id) {
   await sbFetch(`/rest/v1/albums?id=eq.${id}`, { method: 'DELETE' });
 }
 async function insertPhoto(albumId, fileName, filePath) {
-  await sbFetch('/rest/v1/photos', { method: 'POST', body: JSON.stringify({ album_id: albumId, file_name: fileName, file_path: filePath }) });
+  await sbFetch('/rest/v1/photos', {
+    method: 'POST',
+    body: JSON.stringify({ album_id: albumId, file_name: fileName, file_path: filePath })
+  });
 }
 async function deletePhoto(photoId, filePath) {
   await sbFetch(`/rest/v1/photos?id=eq.${photoId}`, { method: 'DELETE' });
@@ -531,6 +440,7 @@ async function uploadFile(file, albumId) {
   return filePath;
 }
 
+// ROUTING
 function getAlbumIdFromUrl() {
   return new URLSearchParams(window.location.search).get('album');
 }
@@ -539,7 +449,7 @@ function showScreen(id) {
   document.getElementById('screen-' + id).classList.add('active');
 }
 
-// AUTH
+// ADMIN AUTH
 function doLogin() {
   const pw = document.getElementById('login-pw').value;
   if (pw === ADMIN_PW) {
@@ -573,6 +483,7 @@ async function loadAlbums() {
       <div class="album-card-top">
         <div class="album-info">
           <div class="album-name">${a.name}</div>
+          <div class="album-code">초대코드: ${a.invite_code || '없음'}</div>
           <div class="album-meta">사진 ${count}장</div>
         </div>
         <div class="album-actions">
@@ -616,12 +527,16 @@ async function loadAdminPhotos(albumId) {
   `).join('');
 }
 async function createAlbum() {
-  const input = document.getElementById('album-name-input');
-  const name = input.value.trim();
+  const nameInput = document.getElementById('album-name-input');
+  const codeInput = document.getElementById('album-code-input');
+  const name = nameInput.value.trim();
+  const code = codeInput.value.trim();
   if (!name) { showToast('앨범 이름을 입력해줘!'); return; }
-  input.disabled = true;
-  await insertAlbum(name);
-  input.value = ''; input.disabled = false;
+  if (!code) { showToast('초대코드를 입력해줘!'); return; }
+  nameInput.disabled = codeInput.disabled = true;
+  await insertAlbum(name, code);
+  nameInput.value = codeInput.value = '';
+  nameInput.disabled = codeInput.disabled = false;
   showToast(`"${name}" 앨범 만들었어! 🎉`);
   await loadAlbums();
 }
@@ -659,11 +574,9 @@ async function removePhoto(photoId, filePath, albumId) {
 }
 
 // QR
-let currentQRUrl = '';
 function showQR(albumId, albumName) {
   const url = `${BASE_URL}?album=${albumId}`;
-  currentQRUrl = url;
-  document.getElementById('qr-modal-title').textContent = `${albumName} 앨범`;
+  document.getElementById('qr-modal-title').textContent = `${albumName}`;
   document.getElementById('qr-url').textContent = url;
   document.getElementById('qr-container').innerHTML = '';
   new QRCode(document.getElementById('qr-container'), { text: url, width: 200, height: 200, colorDark: '#0f0f0f', colorLight: '#ffffff' });
@@ -681,36 +594,60 @@ function saveQR() {
 }
 document.getElementById('qr-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeQR(); });
 
+// INVITE (친구용 초대코드 검증)
+let currentAlbumId = null;
+
+async function verifyCode() {
+  const code = document.getElementById('invite-code-input').value.trim();
+  if (!code) { showToast('초대코드를 입력해줘!'); return; }
+  const album = await getAlbumByCode(code);
+  if (!album) {
+    showToast('초대코드가 맞지 않아요 🔐');
+    document.getElementById('invite-code-input').value = '';
+    return;
+  }
+  currentAlbumId = album.id;
+  sessionStorage.setItem('albumId', album.id);
+  sessionStorage.setItem('albumName', album.name);
+  await showGallery(album.id, album.name);
+}
+document.getElementById('invite-code-input').addEventListener('keydown', e => { if (e.key === 'Enter') verifyCode(); });
+
 // GALLERY
 let galleryPhotos = [];
 let currentPhotoIdx = 0;
 let selectMode = false;
 let selectedSet = new Set();
 
-async function showGallery(albumId) {
+async function showGallery(albumId, albumName) {
+  currentAlbumId = albumId;
   showScreen('gallery');
-  const photos = await getPhotos(albumId);
-  const res = await sbFetch(`/rest/v1/albums?id=eq.${albumId}&select=name`);
-  const albums = await res.json();
-  const albumName = albums[0]?.name ?? '앨범';
-  document.getElementById('gallery-title').textContent = albumName;
-  document.getElementById('gallery-count').textContent = `사진 ${photos.length}장`;
-  galleryPhotos = photos;
-  renderGallery();
-  if (photos.length) {
-    document.getElementById('gallery-toolbar').style.display = 'flex';
+  if (!albumName) {
+    const res = await sbFetch(`/rest/v1/albums?id=eq.${albumId}&select=name`);
+    const data = await res.json();
+    albumName = data[0]?.name ?? '앨범';
   }
+  document.getElementById('gallery-title').textContent = albumName;
+  await loadGalleryPhotos(albumId);
+}
+
+async function loadGalleryPhotos(albumId) {
+  const photos = await getPhotos(albumId);
+  galleryPhotos = photos;
+  document.getElementById('gallery-count').textContent = `사진 ${photos.length}장`;
+  renderGallery();
+  if (photos.length) document.getElementById('gallery-toolbar').style.display = 'flex';
 }
 
 function renderGallery() {
   const grid = document.getElementById('gallery-grid');
   if (!galleryPhotos.length) {
-    grid.innerHTML = '<div class="empty" style="grid-column:span 3"><div class="empty-icon">🖼️</div><div class="empty-text">아직 사진이 없어요</div></div>';
+    grid.innerHTML = '<div class="empty" style="grid-column:span 3"><div class="empty-icon">🖼️</div><div class="empty-text">아직 사진이 없어요<br>첫 사진을 올려보세요!</div></div>';
     return;
   }
   grid.innerHTML = galleryPhotos.map((p, i) => `
     <div class="gallery-item ${selectedSet.has(i) ? 'selected' : ''}" id="gitem-${i}"
-      onclick="handleGalleryTap(${i})"
+      onclick="handleTap(${i})"
       ontouchstart="startLongPress(${i})"
       ontouchend="cancelLongPress()"
       ontouchmove="cancelLongPress()">
@@ -719,52 +656,49 @@ function renderGallery() {
   `).join('');
 }
 
-function handleGalleryTap(idx) {
+// LONG PRESS
+let longPressTimer = null;
+function startLongPress(idx) {
+  longPressTimer = setTimeout(() => {
+    if (!selectMode) enterSelectMode();
+    selectedSet.add(idx);
+    updateSelectUI();
+  }, 500);
+}
+function cancelLongPress() { clearTimeout(longPressTimer); }
+
+function handleTap(idx) {
   if (selectMode) {
-    // 선택 토글
-    if (selectedSet.has(idx)) {
-      selectedSet.delete(idx);
-    } else {
-      selectedSet.add(idx);
-    }
+    if (selectedSet.has(idx)) selectedSet.delete(idx);
+    else selectedSet.add(idx);
     updateSelectUI();
   } else {
     openLightbox(idx);
   }
 }
 
-function toggleSelectMode() {
-  selectMode = !selectMode;
+function enterSelectMode() {
+  selectMode = true;
+  document.getElementById('select-all-btn').style.display = 'inline-flex';
+  document.getElementById('select-cancel-btn').style.display = 'inline-flex';
+  document.getElementById('download-selected-btn').style.display = 'inline-flex';
+  document.getElementById('toolbar-hint').style.display = 'none';
+}
+function cancelSelect() {
+  selectMode = false;
   selectedSet.clear();
-  const allBtn = document.getElementById('select-all-btn');
-  const cancelBtn = document.getElementById('select-cancel-btn');
-  const dlSelected = document.getElementById('download-selected-btn');
-  const hint = document.querySelector('.gallery-toolbar span');
-  if (selectMode) {
-    allBtn.style.display = 'inline-flex';
-    cancelBtn.style.display = 'inline-flex';
-    dlSelected.style.display = 'inline-flex';
-    if (hint) hint.style.display = 'none';
-  } else {
-    allBtn.style.display = 'none';
-    cancelBtn.style.display = 'none';
-    dlSelected.style.display = 'none';
-    if (hint) hint.style.display = '';
-  }
+  document.getElementById('select-all-btn').style.display = 'none';
+  document.getElementById('select-cancel-btn').style.display = 'none';
+  document.getElementById('download-selected-btn').style.display = 'none';
+  document.getElementById('toolbar-hint').style.display = '';
   updateSelectUI();
 }
-
 function selectAll() {
-  if (selectedSet.size === galleryPhotos.length) {
-    selectedSet.clear();
-  } else {
-    galleryPhotos.forEach((_, i) => selectedSet.add(i));
-  }
+  if (selectedSet.size === galleryPhotos.length) selectedSet.clear();
+  else galleryPhotos.forEach((_, i) => selectedSet.add(i));
   updateSelectUI();
 }
-
 function updateSelectUI() {
-  // 각 아이템 selected 클래스 업데이트
   galleryPhotos.forEach((_, i) => {
     const el = document.getElementById(`gitem-${i}`);
     if (el) el.classList.toggle('selected', selectedSet.has(i));
@@ -778,23 +712,30 @@ function updateSelectUI() {
   }
 }
 
-// LONG PRESS
-let longPressTimer = null;
-function startLongPress(idx) {
-  longPressTimer = setTimeout(() => {
-    if (!selectMode) {
-      selectMode = true;
-      document.getElementById('select-all-btn').style.display = 'inline-flex';
-      document.getElementById('select-cancel-btn').style.display = 'inline-flex';
-      document.getElementById('download-selected-btn').style.display = 'inline-flex';
-      document.querySelector('.gallery-toolbar span').style.display = 'none';
-    }
-    selectedSet.add(idx);
-    updateSelectUI();
-  }, 500);
-}
-function cancelLongPress() {
-  clearTimeout(longPressTimer);
+// 친구 업로드
+function openUploadModal() { document.getElementById('upload-modal').classList.add('open'); }
+function closeUploadModal() { document.getElementById('upload-modal').classList.remove('open'); }
+document.getElementById('upload-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeUploadModal(); });
+
+async function friendUpload(event) {
+  const files = Array.from(event.target.files);
+  if (!files.length) return;
+  const progress = document.getElementById('friend-progress');
+  const bar = document.getElementById('friend-bar');
+  progress.classList.add('show');
+  for (let i = 0; i < files.length; i++) {
+    bar.style.width = ((i / files.length) * 100) + '%';
+    try {
+      const filePath = await uploadFile(files[i], currentAlbumId);
+      await insertPhoto(currentAlbumId, files[i].name, filePath);
+    } catch(e) { showToast('업로드 실패 😢'); }
+  }
+  bar.style.width = '100%';
+  setTimeout(() => { progress.classList.remove('show'); bar.style.width = '0%'; }, 500);
+  event.target.value = '';
+  closeUploadModal();
+  showToast(`${files.length}장 올렸어요! 📸`);
+  await loadGalleryPhotos(currentAlbumId);
 }
 
 // LIGHTBOX
@@ -811,30 +752,25 @@ function downloadCurrent() {
 
 // DOWNLOAD
 async function downloadAll() {
-  showToast('전체 저장 시작! 잠깐만 기다려줘 📥');
+  showToast('전체 저장 시작! 📥');
   for (let i = 0; i < galleryPhotos.length; i++) {
-    const p = galleryPhotos[i];
-    await downloadImage(getPublicUrl(p.file_path), p.file_name);
+    await downloadImage(getPublicUrl(galleryPhotos[i].file_path), galleryPhotos[i].file_name);
     await new Promise(r => setTimeout(r, 800));
   }
   showToast('전체 저장 완료! 🎉');
 }
-
 async function downloadSelected() {
   if (selectedSet.size === 0) { showToast('사진을 선택해줘!'); return; }
   const indices = Array.from(selectedSet).sort((a,b) => a-b);
   showToast(`${indices.length}장 저장 시작! 📥`);
   for (const idx of indices) {
-    const p = galleryPhotos[idx];
-    await downloadImage(getPublicUrl(p.file_path), p.file_name);
+    await downloadImage(getPublicUrl(galleryPhotos[idx].file_path), galleryPhotos[idx].file_name);
     await new Promise(r => setTimeout(r, 800));
   }
   showToast(`${indices.length}장 저장 완료! 🎉`);
-  toggleSelectMode();
+  cancelSelect();
 }
-
 async function downloadImage(url, name) {
-  // Supabase public URL에 ?download 파라미터 추가하면 강제 다운로드됨
   const dlUrl = url + '?download=' + encodeURIComponent(name || 'photo.jpg');
   const a = document.createElement('a');
   a.href = dlUrl;
@@ -857,11 +793,15 @@ function showToast(msg) {
 }
 
 // INIT
-const albumId = getAlbumIdFromUrl();
-if (albumId) {
-  showGallery(albumId);
+const albumIdFromUrl = getAlbumIdFromUrl();
+if (albumIdFromUrl) {
+  // QR 스캔으로 접속 → 초대코드 입력 화면
+  showScreen('invite');
 } else if (sessionStorage.getItem('admin')) {
   showAdmin();
+} else if (sessionStorage.getItem('albumId')) {
+  // 세션에 앨범 정보 있으면 바로 갤러리
+  showGallery(sessionStorage.getItem('albumId'), sessionStorage.getItem('albumName'));
 } else {
   showScreen('login');
 }
