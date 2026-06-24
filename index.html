@@ -834,27 +834,16 @@ async function downloadSelected() {
 }
 
 async function downloadImage(url, name) {
-  try {
-    const res = await fetch(url, { mode: 'cors' });
-    if (!res.ok) throw new Error('fetch failed');
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = name || 'photo.jpg';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
-  } catch(e) {
-    // CORS 실패시 직접 링크로 fallback
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = name || 'photo.jpg';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
+  // Supabase public URL에 ?download 파라미터 추가하면 강제 다운로드됨
+  const dlUrl = url + '?download=' + encodeURIComponent(name || 'photo.jpg');
+  const a = document.createElement('a');
+  a.href = dlUrl;
+  a.download = name || 'photo.jpg';
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  await new Promise(r => setTimeout(r, 800));
 }
 
 // TOAST
