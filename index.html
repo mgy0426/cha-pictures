@@ -144,16 +144,7 @@
   }
   .modal-btns { display: flex; gap: 10px; }
 
-  /* INVITE (친구용 초대코드 입력) */
-  #screen-invite {
-    min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; padding: 40px 24px;
-  }
-  #screen-invite.active { display: flex; }
-  .invite-emoji { font-size: 48px; margin-bottom: 16px; }
-  .invite-title { font-size: 24px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 6px; text-align: center; }
-  .invite-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; text-align: center; }
-  .invite-form { width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 12px; }
+
 
   /* GALLERY */
   #screen-gallery { padding: 20px; padding-bottom: 120px; }
@@ -250,19 +241,40 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   .logout-btn { background: none; border: none; color: var(--text-muted); font-size: 13px; cursor: pointer; padding: 4px 8px; }
+  .admin-create-bar {
+    position: sticky; top: 57px; z-index: 90;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+  }
+  .admin-create-row {
+    display: flex; gap: 8px; align-items: center;
+  }
+  .admin-create-row .input {
+    flex: 1; font-size: 14px; padding: 10px 12px;
+  }
+  .admin-create-row .btn {
+    padding: 10px 16px; font-size: 14px; white-space: nowrap; flex-shrink: 0;
+  }
 </style>
 </head>
 <body>
 
-<!-- 관리자 로그인 -->
+<!-- 메인 화면: 초대코드 중심 -->
 <div id="screen-login" class="screen active">
   <div class="login-emoji">📷</div>
   <div class="login-title">cha<span>_pictures</span></div>
-  <div class="login-sub">관리자 로그인</div>
+  <div class="login-sub">초대코드를 입력하고 사진을 공유하세요</div>
   <div class="login-form">
-    <input class="input" type="password" id="login-pw" placeholder="관리자 비밀번호" />
-    <button class="btn btn-accent btn-full" onclick="doLogin()">입장하기</button>
-    <div class="login-hint">초대코드가 있다면 QR코드로 접속하세요 🙂</div>
+    <input class="input" type="text" id="invite-code-main" placeholder="초대코드 입력" style="text-align:center;font-size:20px;letter-spacing:2px;" />
+    <button class="btn btn-accent btn-full" onclick="verifyCodeMain()">입장하기</button>
+    <div class="login-hint" style="margin-top:16px;">
+      <span onclick="toggleAdminForm()" style="cursor:pointer;text-decoration:underline;">관리자이신가요?</span>
+    </div>
+    <div id="admin-form" style="display:none; margin-top:8px;">
+      <input class="input" type="password" id="login-pw" placeholder="관리자 비밀번호" style="margin-bottom:10px;" />
+      <button class="btn btn-ghost btn-full" onclick="doLogin()">관리자 로그인</button>
+    </div>
   </div>
 </div>
 
@@ -272,17 +284,15 @@
     <div class="header-logo">cha<span>_pictures</span></div>
     <button class="logout-btn" onclick="doLogout()">로그아웃</button>
   </div>
-  <div style="padding: 20px;">
-    <div class="section-title">새 앨범 만들기</div>
-    <div class="create-card">
-      <div class="create-row">
-        <input class="input" type="text" id="album-name-input" placeholder="앨범 이름 (예: 제주도 여행)" />
-      </div>
-      <div class="create-row">
-        <input class="input" type="text" id="album-code-input" placeholder="초대코드 (예: jeju2024)" />
-        <button class="btn btn-accent btn-sm" onclick="createAlbum()">만들기</button>
-      </div>
+  <!-- 상단 고정 입력창 -->
+  <div class="admin-create-bar">
+    <div class="admin-create-row">
+      <input class="input" type="text" id="album-name-input" placeholder="앨범 이름" />
+      <input class="input" type="text" id="album-code-input" placeholder="초대코드" />
+      <button class="btn btn-accent" onclick="createAlbum()">만들기</button>
     </div>
+  </div>
+  <div style="padding: 16px 20px 20px;">
     <div class="section-title">앨범 목록</div>
     <div id="album-list" class="album-list">
       <div class="loading"><div class="spinner"></div>불러오는 중...</div>
@@ -290,16 +300,7 @@
   </div>
 </div>
 
-<!-- 친구용 초대코드 입력 -->
-<div id="screen-invite" class="screen">
-  <div class="invite-emoji">🔑</div>
-  <div class="invite-title" id="invite-title">초대코드를 입력해주세요</div>
-  <div class="invite-sub">초대코드를 입력하면<br>사진을 올리고 받을 수 있어요</div>
-  <div class="invite-form">
-    <input class="input" type="text" id="invite-code-input" placeholder="초대코드 입력" style="text-align:center;font-size:20px;letter-spacing:2px;" />
-    <button class="btn btn-accent btn-full" onclick="verifyCode()">입장하기</button>
-  </div>
-</div>
+
 
 <!-- 갤러리 (친구용) -->
 <div id="screen-gallery" class="screen">
@@ -460,7 +461,7 @@ function doLogin() {
     document.getElementById('login-pw').value = '';
   }
 }
-document.getElementById('login-pw').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
 function doLogout() { sessionStorage.removeItem('admin'); showScreen('login'); }
 
 // ADMIN
@@ -597,13 +598,18 @@ document.getElementById('qr-modal').addEventListener('click', e => { if (e.targe
 // INVITE (친구용 초대코드 검증)
 let currentAlbumId = null;
 
-async function verifyCode() {
-  const code = document.getElementById('invite-code-input').value.trim();
+function toggleAdminForm() {
+  const form = document.getElementById('admin-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+async function verifyCodeMain() {
+  const code = document.getElementById('invite-code-main').value.trim();
   if (!code) { showToast('초대코드를 입력해줘!'); return; }
   const album = await getAlbumByCode(code);
   if (!album) {
     showToast('초대코드가 맞지 않아요 🔐');
-    document.getElementById('invite-code-input').value = '';
+    document.getElementById('invite-code-main').value = '';
     return;
   }
   currentAlbumId = album.id;
@@ -611,7 +617,11 @@ async function verifyCode() {
   sessionStorage.setItem('albumName', album.name);
   await showGallery(album.id, album.name);
 }
-document.getElementById('invite-code-input').addEventListener('keydown', e => { if (e.key === 'Enter') verifyCode(); });
+
+
+
+document.getElementById('invite-code-main').addEventListener('keydown', e => { if (e.key === 'Enter') verifyCodeMain(); });
+document.getElementById('login-pw').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 
 // GALLERY
 let galleryPhotos = [];
@@ -795,8 +805,8 @@ function showToast(msg) {
 // INIT
 const albumIdFromUrl = getAlbumIdFromUrl();
 if (albumIdFromUrl) {
-  // QR 스캔으로 접속 → 초대코드 입력 화면
-  showScreen('invite');
+  // QR 스캔으로 접속 → 메인 화면(초대코드 입력)
+  showScreen('login');
 } else if (sessionStorage.getItem('admin')) {
   showAdmin();
 } else if (sessionStorage.getItem('albumId')) {
