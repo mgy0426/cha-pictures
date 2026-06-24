@@ -31,7 +31,6 @@
     margin: 0 auto;
   }
 
-  /* ── HEADER ── */
   .header {
     position: sticky;
     top: 0;
@@ -43,15 +42,10 @@
     align-items: center;
     justify-content: space-between;
   }
-  .header-logo {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-  }
+  .header-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
   .header-logo span { color: var(--accent); }
   .header-right { display: flex; gap: 10px; align-items: center; }
 
-  /* ── BUTTONS ── */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -73,11 +67,10 @@
   .btn-sm { padding: 8px 14px; font-size: 13px; }
   .btn-full { width: 100%; }
 
-  /* ── SCREENS ── */
   .screen { display: none; }
   .screen.active { display: block; }
 
-  /* ── LOGIN ── */
+  /* LOGIN */
   #screen-login {
     min-height: 100vh;
     display: flex;
@@ -106,7 +99,7 @@
   .input:focus { border-color: var(--accent); }
   .login-hint { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 4px; }
 
-  /* ── ADMIN ── */
+  /* ADMIN */
   #screen-admin { padding: 20px; }
   .section-title {
     font-size: 13px;
@@ -116,8 +109,6 @@
     letter-spacing: 0.8px;
     margin-bottom: 14px;
   }
-
-  /* 앨범 생성 카드 */
   .create-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -129,8 +120,6 @@
     align-items: center;
   }
   .create-card .input { flex: 1; font-size: 15px; padding: 12px 14px; }
-
-  /* 앨범 리스트 */
   .album-list { display: flex; flex-direction: column; gap: 12px; }
   .album-card {
     background: var(--surface);
@@ -148,8 +137,6 @@
   .album-name { font-size: 16px; font-weight: 700; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .album-meta { font-size: 12px; color: var(--text-muted); }
   .album-actions { display: flex; gap: 8px; flex-shrink: 0; }
-
-  /* 앨범 확장 패널 */
   .album-panel {
     display: none;
     border-top: 1px solid var(--border);
@@ -158,8 +145,6 @@
   }
   .album-panel.open { display: block; }
   .panel-actions { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-
-  /* 사진 그리드 */
   .photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -167,31 +152,19 @@
     border-radius: var(--radius-sm);
     overflow: hidden;
   }
-  .photo-thumb {
-    aspect-ratio: 1;
-    object-fit: cover;
-    width: 100%;
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
+  .photo-thumb { aspect-ratio: 1; object-fit: cover; width: 100%; cursor: pointer; transition: opacity 0.15s; }
   .photo-thumb:active { opacity: 0.7; }
   .photo-thumb-wrap { position: relative; }
   .photo-delete-btn {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 4px; right: 4px;
     background: rgba(0,0,0,0.7);
     border: none;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    color: #fff;
-    font-size: 14px;
+    width: 24px; height: 24px;
+    color: #fff; font-size: 14px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
   }
 
   /* QR 모달 */
@@ -235,11 +208,27 @@
   }
   .modal-btns { display: flex; gap: 10px; }
 
-  /* ── GALLERY (친구용) ── */
-  #screen-gallery { padding: 20px; }
-  .gallery-header { margin-bottom: 24px; }
+  /* GALLERY */
+  #screen-gallery { padding: 20px; padding-bottom: 120px; }
+  .gallery-header { margin-bottom: 16px; }
   .gallery-title { font-size: 26px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 4px; }
   .gallery-count { font-size: 13px; color: var(--text-muted); }
+
+  /* 갤러리 툴바 */
+  .gallery-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: center;
+  }
+  .select-count-badge {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-left: auto;
+    min-width: 60px;
+    text-align: right;
+  }
 
   .gallery-grid {
     display: grid;
@@ -247,21 +236,53 @@
     gap: 3px;
     border-radius: var(--radius-sm);
     overflow: hidden;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
   .gallery-item {
     aspect-ratio: 1;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
   .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.2s;
+    transition: opacity 0.15s;
+    pointer-events: none;
   }
-  .gallery-item img:active { transform: scale(0.97); }
+
+  /* 선택됐을 때 */
+  .gallery-item.selected img { opacity: 0.55; }
+  .gallery-item.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 6px; right: 6px;
+    background: var(--accent);
+    color: #0f0f0f;
+    font-size: 13px;
+    font-weight: 800;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 하단 고정 다운로드 바 */
+  .download-bar {
+    position: fixed;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 14px 20px 32px;
+    display: flex;
+    gap: 10px;
+    z-index: 150;
+  }
 
   /* 라이트박스 */
   .lightbox {
@@ -275,15 +296,10 @@
     justify-content: center;
   }
   .lightbox.open { display: flex; }
-  .lightbox-img {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-  }
+  .lightbox-img { max-width: 100%; max-height: 80vh; object-fit: contain; }
   .lightbox-bar {
     position: fixed;
-    bottom: 0;
-    left: 0; right: 0;
+    bottom: 0; left: 0; right: 0;
     background: linear-gradient(transparent, rgba(0,0,0,0.9));
     padding: 20px 24px 36px;
     display: flex;
@@ -296,13 +312,12 @@
     border: none;
     border-radius: 50%;
     width: 40px; height: 40px;
-    color: #fff;
-    font-size: 20px;
+    color: #fff; font-size: 20px;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
   }
 
-  /* ── UPLOAD PROGRESS ── */
+  /* 업로드 프로그레스 */
   .upload-progress {
     background: var(--surface2);
     border-radius: var(--radius-sm);
@@ -312,17 +327,12 @@
     display: none;
   }
   .upload-progress.show { display: block; }
-  .upload-bar {
-    height: 100%;
-    background: var(--accent);
-    width: 0%;
-    transition: width 0.3s;
-  }
+  .upload-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
 
-  /* ── TOAST ── */
+  /* 토스트 */
   .toast {
     position: fixed;
-    bottom: 32px;
+    bottom: 100px;
     left: 50%;
     transform: translateX(-50%) translateY(80px);
     background: var(--accent);
@@ -337,16 +347,9 @@
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* ── EMPTY STATE ── */
-  .empty {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-muted);
-  }
+  .empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
   .empty-icon { font-size: 40px; margin-bottom: 12px; }
   .empty-text { font-size: 14px; }
-
-  /* ── LOADING ── */
   .loading {
     display: flex;
     flex-direction: column;
@@ -365,19 +368,7 @@
     animation: spin 0.7s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* ── LOGOUT ── */
-  .logout-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 13px;
-    cursor: pointer;
-    padding: 4px 8px;
-  }
-  .logout-btn:active { color: var(--text); }
-
-  /* 업로드 영역 */
+  .logout-btn { background: none; border: none; color: var(--text-muted); font-size: 13px; cursor: pointer; padding: 4px 8px; }
   .upload-area {
     border: 2px dashed var(--border);
     border-radius: var(--radius-sm);
@@ -385,18 +376,13 @@
     text-align: center;
     cursor: pointer;
     margin-bottom: 14px;
-    transition: border-color 0.15s;
   }
-  .upload-area:active { border-color: var(--accent); }
-  .upload-area-icon { font-size: 28px; margin-bottom: 6px; }
-  .upload-area-text { font-size: 13px; color: var(--text-muted); }
-
   input[type="file"] { display: none; }
 </style>
 </head>
 <body>
 
-<!-- ── 로그인 화면 ── -->
+<!-- 로그인 -->
 <div id="screen-login" class="screen active">
   <div class="login-emoji">📷</div>
   <div class="login-title">cha<span>_pictures</span></div>
@@ -408,7 +394,7 @@
   </div>
 </div>
 
-<!-- ── 관리자 화면 ── -->
+<!-- 관리자 -->
 <div id="screen-admin" class="screen">
   <div class="header">
     <div class="header-logo">cha<span>_pictures</span></div>
@@ -422,7 +408,6 @@
       <input class="input" type="text" id="album-name-input" placeholder="앨범 이름 (예: 차예, 지민이)" />
       <button class="btn btn-accent btn-sm" onclick="createAlbum()">만들기</button>
     </div>
-
     <div class="section-title">앨범 목록</div>
     <div id="album-list" class="album-list">
       <div class="loading"><div class="spinner"></div>불러오는 중...</div>
@@ -430,26 +415,37 @@
   </div>
 </div>
 
-<!-- ── 갤러리 화면 (친구용) ── -->
+<!-- 갤러리 (친구용) -->
 <div id="screen-gallery" class="screen">
   <div class="header">
     <div class="header-logo">cha<span>_pictures</span></div>
   </div>
-  <div style="padding: 20px;">
+  <div style="padding: 20px; padding-bottom: 120px;">
     <div class="gallery-header">
       <div class="gallery-title" id="gallery-title">앨범</div>
       <div class="gallery-count" id="gallery-count">사진 불러오는 중...</div>
     </div>
+
+    <!-- 툴바: 선택모드 토글 + 선택 개수 -->
+    <div class="gallery-toolbar" id="gallery-toolbar" style="display:none">
+      <button class="btn btn-ghost btn-sm" id="select-mode-btn" onclick="toggleSelectMode()">선택하기</button>
+      <button class="btn btn-ghost btn-sm" id="select-all-btn" onclick="selectAll()" style="display:none">전체선택</button>
+      <span class="select-count-badge" id="select-count-badge"></span>
+    </div>
+
     <div id="gallery-grid" class="gallery-grid">
       <div class="loading" style="grid-column:span 3"><div class="spinner"></div></div>
     </div>
-    <button class="btn btn-accent btn-full" id="download-all-btn" onclick="downloadAll()" style="display:none">
-      📥 전체 다운로드
-    </button>
+  </div>
+
+  <!-- 하단 다운로드 바 -->
+  <div class="download-bar" id="download-bar">
+    <button class="btn btn-ghost btn-full" onclick="downloadAll()">📥 전체 저장</button>
+    <button class="btn btn-accent btn-full" id="download-selected-btn" onclick="downloadSelected()" style="display:none">선택 저장 (<span id="selected-count">0</span>)</button>
   </div>
 </div>
 
-<!-- ── QR 모달 ── -->
+<!-- QR 모달 -->
 <div class="modal-bg" id="qr-modal">
   <div class="modal">
     <div class="modal-handle"></div>
@@ -464,7 +460,7 @@
   </div>
 </div>
 
-<!-- ── 라이트박스 ── -->
+<!-- 라이트박스 -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img class="lightbox-img" id="lightbox-img" src="" alt="">
@@ -474,17 +470,14 @@
   </div>
 </div>
 
-<!-- ── 토스트 ── -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CONFIG ──
 const SUPABASE_URL = 'https://xcwtulcjvewmamblhwwp.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhjd3R1bGNqdmV3bWFtYmxod3dwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyMzQzNjgsImV4cCI6MjA5NzgxMDM2OH0.8JRDAanhr2iVfIilIpZaRzU04Av82MPjeM8hcOxY1Fc';
-const ADMIN_PW = '2015'; // ← 나중에 바꿔도 됨
+const ADMIN_PW = '2015';
 const BASE_URL = window.location.origin + window.location.pathname;
 
-// ── SUPABASE HELPERS ──
 async function sbFetch(path, options = {}) {
   const res = await fetch(SUPABASE_URL + path, {
     ...options,
@@ -503,69 +496,49 @@ async function getAlbums() {
   const res = await sbFetch('/rest/v1/albums?select=*,photos(count)&order=created_at.desc');
   return res.json();
 }
-
 async function getPhotos(albumId) {
   const res = await sbFetch(`/rest/v1/photos?album_id=eq.${albumId}&order=created_at.asc`);
   return res.json();
 }
-
 async function insertAlbum(name) {
-  const res = await sbFetch('/rest/v1/albums', {
-    method: 'POST',
-    body: JSON.stringify({ name })
-  });
+  const res = await sbFetch('/rest/v1/albums', { method: 'POST', body: JSON.stringify({ name }) });
   const data = await res.json();
   return data[0];
 }
-
 async function deleteAlbum(id) {
   await sbFetch(`/rest/v1/albums?id=eq.${id}`, { method: 'DELETE' });
 }
-
 async function insertPhoto(albumId, fileName, filePath) {
-  await sbFetch('/rest/v1/photos', {
-    method: 'POST',
-    body: JSON.stringify({ album_id: albumId, file_name: fileName, file_path: filePath })
-  });
+  await sbFetch('/rest/v1/photos', { method: 'POST', body: JSON.stringify({ album_id: albumId, file_name: fileName, file_path: filePath }) });
 }
-
 async function deletePhoto(photoId, filePath) {
   await sbFetch(`/rest/v1/photos?id=eq.${photoId}`, { method: 'DELETE' });
   await sbFetch(`/storage/v1/object/photos/${filePath}`, { method: 'DELETE' });
 }
-
 function getPublicUrl(filePath) {
   return `${SUPABASE_URL}/storage/v1/object/public/photos/${filePath}`;
 }
-
 async function uploadFile(file, albumId) {
   const ext = file.name.split('.').pop();
-  const filePath = `${albumId}/${Date.now()}_${Math.random().toString(36).substr(2, 6)}.${ext}`;
+  const filePath = `${albumId}/${Date.now()}_${Math.random().toString(36).substr(2,6)}.${ext}`;
   const res = await fetch(`${SUPABASE_URL}/storage/v1/object/photos/${filePath}`, {
     method: 'POST',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY,
-      'Content-Type': file.type
-    },
+    headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': file.type },
     body: file
   });
   if (!res.ok) throw new Error('업로드 실패');
   return filePath;
 }
 
-// ── ROUTING ──
 function getAlbumIdFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('album');
+  return new URLSearchParams(window.location.search).get('album');
 }
-
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + id).classList.add('active');
 }
 
-// ── AUTH ──
+// AUTH
 function doLogin() {
   const pw = document.getElementById('login-pw').value;
   if (pw === ADMIN_PW) {
@@ -576,24 +549,14 @@ function doLogin() {
     document.getElementById('login-pw').value = '';
   }
 }
+document.getElementById('login-pw').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+function doLogout() { sessionStorage.removeItem('admin'); showScreen('login'); }
 
-document.getElementById('login-pw').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doLogin();
-});
-
-function doLogout() {
-  sessionStorage.removeItem('admin');
-  showScreen('login');
-}
-
-// ── ADMIN ──
-let openAlbumId = null;
-
+// ADMIN
 async function showAdmin() {
   showScreen('admin');
   await loadAlbums();
 }
-
 async function loadAlbums() {
   const list = document.getElementById('album-list');
   list.innerHTML = '<div class="loading"><div class="spinner"></div>불러오는 중...</div>';
@@ -631,18 +594,12 @@ async function loadAlbums() {
     </div>`;
   }).join('');
 }
-
 async function togglePanel(albumId) {
   const panel = document.getElementById(`panel-${albumId}`);
   const isOpen = panel.classList.contains('open');
-  // 다른 패널 닫기
   document.querySelectorAll('.album-panel.open').forEach(p => p.classList.remove('open'));
-  if (!isOpen) {
-    panel.classList.add('open');
-    await loadAdminPhotos(albumId);
-  }
+  if (!isOpen) { panel.classList.add('open'); await loadAdminPhotos(albumId); }
 }
-
 async function loadAdminPhotos(albumId) {
   const grid = document.getElementById(`grid-${albumId}`);
   const photos = await getPhotos(albumId);
@@ -657,19 +614,16 @@ async function loadAdminPhotos(albumId) {
     </div>
   `).join('');
 }
-
 async function createAlbum() {
   const input = document.getElementById('album-name-input');
   const name = input.value.trim();
   if (!name) { showToast('앨범 이름을 입력해줘!'); return; }
   input.disabled = true;
   await insertAlbum(name);
-  input.value = '';
-  input.disabled = false;
+  input.value = ''; input.disabled = false;
   showToast(`"${name}" 앨범 만들었어! 🎉`);
   await loadAlbums();
 }
-
 async function uploadPhotos(event, albumId) {
   const files = Array.from(event.target.files);
   if (!files.length) return;
@@ -690,14 +644,12 @@ async function uploadPhotos(event, albumId) {
   await loadAdminPhotos(albumId);
   await loadAlbums();
 }
-
 async function removeAlbum(albumId) {
   if (!confirm('앨범을 삭제할까요? 사진도 모두 삭제돼요.')) return;
   await deleteAlbum(albumId);
   showToast('앨범 삭제했어요');
   await loadAlbums();
 }
-
 async function removePhoto(photoId, filePath, albumId) {
   await deletePhoto(photoId, filePath);
   showToast('사진 삭제했어요');
@@ -705,7 +657,7 @@ async function removePhoto(photoId, filePath, albumId) {
   await loadAlbums();
 }
 
-// ── QR ──
+// QR
 let currentQRUrl = '';
 function showQR(albumId, albumName) {
   const url = `${BASE_URL}?album=${albumId}`;
@@ -713,20 +665,10 @@ function showQR(albumId, albumName) {
   document.getElementById('qr-modal-title').textContent = `${albumName} 앨범`;
   document.getElementById('qr-url').textContent = url;
   document.getElementById('qr-container').innerHTML = '';
-  new QRCode(document.getElementById('qr-container'), {
-    text: url,
-    width: 200,
-    height: 200,
-    colorDark: '#0f0f0f',
-    colorLight: '#ffffff'
-  });
+  new QRCode(document.getElementById('qr-container'), { text: url, width: 200, height: 200, colorDark: '#0f0f0f', colorLight: '#ffffff' });
   document.getElementById('qr-modal').classList.add('open');
 }
-
-function closeQR() {
-  document.getElementById('qr-modal').classList.remove('open');
-}
-
+function closeQR() { document.getElementById('qr-modal').classList.remove('open'); }
 function saveQR() {
   const canvas = document.querySelector('#qr-container canvas');
   if (!canvas) return;
@@ -736,83 +678,156 @@ function saveQR() {
   a.click();
   showToast('QR 저장했어요! 📲');
 }
+document.getElementById('qr-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeQR(); });
 
-document.getElementById('qr-modal').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeQR();
-});
-
-// ── GALLERY (친구용) ──
+// GALLERY
 let galleryPhotos = [];
 let currentPhotoIdx = 0;
+let selectMode = false;
+let selectedSet = new Set();
 
 async function showGallery(albumId) {
   showScreen('gallery');
   const photos = await getPhotos(albumId);
-
-  // 앨범 이름 가져오기
   const res = await sbFetch(`/rest/v1/albums?id=eq.${albumId}&select=name`);
   const albums = await res.json();
   const albumName = albums[0]?.name ?? '앨범';
-
   document.getElementById('gallery-title').textContent = albumName;
   document.getElementById('gallery-count').textContent = `사진 ${photos.length}장`;
-
   galleryPhotos = photos;
-  const grid = document.getElementById('gallery-grid');
+  renderGallery();
+  if (photos.length) {
+    document.getElementById('gallery-toolbar').style.display = 'flex';
+  }
+}
 
-  if (!photos.length) {
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  if (!galleryPhotos.length) {
     grid.innerHTML = '<div class="empty" style="grid-column:span 3"><div class="empty-icon">🖼️</div><div class="empty-text">아직 사진이 없어요</div></div>';
     return;
   }
-
-  grid.innerHTML = photos.map((p, i) => `
-    <div class="gallery-item">
-      <img src="${getPublicUrl(p.file_path)}" loading="lazy" onclick="openLightbox(${i})" />
+  grid.innerHTML = galleryPhotos.map((p, i) => `
+    <div class="gallery-item ${selectedSet.has(i) ? 'selected' : ''}" id="gitem-${i}" onclick="handleGalleryTap(${i})">
+      <img src="${getPublicUrl(p.file_path)}" loading="lazy" />
     </div>
   `).join('');
-
-  document.getElementById('download-all-btn').style.display = 'flex';
 }
 
-// ── LIGHTBOX ──
+function handleGalleryTap(idx) {
+  if (selectMode) {
+    // 선택 토글
+    if (selectedSet.has(idx)) {
+      selectedSet.delete(idx);
+    } else {
+      selectedSet.add(idx);
+    }
+    updateSelectUI();
+  } else {
+    openLightbox(idx);
+  }
+}
+
+function toggleSelectMode() {
+  selectMode = !selectMode;
+  selectedSet.clear();
+  const btn = document.getElementById('select-mode-btn');
+  const allBtn = document.getElementById('select-all-btn');
+  const dlSelected = document.getElementById('download-selected-btn');
+  if (selectMode) {
+    btn.textContent = '선택 취소';
+    btn.style.color = 'var(--danger)';
+    allBtn.style.display = 'inline-flex';
+    dlSelected.style.display = 'inline-flex';
+  } else {
+    btn.textContent = '선택하기';
+    btn.style.color = '';
+    allBtn.style.display = 'none';
+    dlSelected.style.display = 'none';
+  }
+  updateSelectUI();
+}
+
+function selectAll() {
+  if (selectedSet.size === galleryPhotos.length) {
+    selectedSet.clear();
+  } else {
+    galleryPhotos.forEach((_, i) => selectedSet.add(i));
+  }
+  updateSelectUI();
+}
+
+function updateSelectUI() {
+  // 각 아이템 selected 클래스 업데이트
+  galleryPhotos.forEach((_, i) => {
+    const el = document.getElementById(`gitem-${i}`);
+    if (el) el.classList.toggle('selected', selectedSet.has(i));
+  });
+  const count = selectedSet.size;
+  document.getElementById('selected-count').textContent = count;
+  document.getElementById('select-count-badge').textContent = selectMode && count > 0 ? `${count}장 선택됨` : '';
+  const allBtn = document.getElementById('select-all-btn');
+  if (allBtn.style.display !== 'none') {
+    allBtn.textContent = selectedSet.size === galleryPhotos.length ? '전체해제' : '전체선택';
+  }
+}
+
+// LIGHTBOX
 function openLightbox(idx) {
   currentPhotoIdx = idx;
   document.getElementById('lightbox-img').src = getPublicUrl(galleryPhotos[idx].file_path);
   document.getElementById('lightbox').classList.add('open');
 }
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-}
-
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 function downloadCurrent() {
-  const url = getPublicUrl(galleryPhotos[currentPhotoIdx].file_path);
-  downloadImage(url, galleryPhotos[currentPhotoIdx].file_name);
+  const p = galleryPhotos[currentPhotoIdx];
+  downloadImage(getPublicUrl(p.file_path), p.file_name);
 }
 
+// DOWNLOAD
 async function downloadAll() {
-  showToast('다운로드 시작! 잠깐만 기다려줘 📥');
+  showToast('전체 저장 시작! 잠깐만 기다려줘 📥');
   for (const p of galleryPhotos) {
     await downloadImage(getPublicUrl(p.file_path), p.file_name);
     await new Promise(r => setTimeout(r, 300));
   }
-  showToast('전체 다운로드 완료! 🎉');
+  showToast('전체 저장 완료! 🎉');
 }
 
-function downloadImage(url, name) {
-  return new Promise(resolve => {
+async function downloadSelected() {
+  if (selectedSet.size === 0) { showToast('사진을 선택해줘!'); return; }
+  const indices = Array.from(selectedSet).sort((a,b) => a-b);
+  showToast(`${indices.length}장 저장 시작! 📥`);
+  for (const idx of indices) {
+    const p = galleryPhotos[idx];
+    await downloadImage(getPublicUrl(p.file_path), p.file_name);
+    await new Promise(r => setTimeout(r, 300));
+  }
+  showToast(`${indices.length}장 저장 완료! 🎉`);
+  // 선택 모드 종료
+  toggleSelectMode();
+}
+
+async function downloadImage(url, name) {
+  try {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
+    a.href = blobUrl;
     a.download = name || 'photo.jpg';
-    a.target = '_blank';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    setTimeout(resolve, 300);
-  });
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+    await new Promise(r => setTimeout(r, 300));
+  } catch(e) {
+    window.open(url, '_blank');
+    await new Promise(r => setTimeout(r, 300));
+  }
 }
 
-// ── TOAST ──
+// TOAST
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -822,7 +837,7 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ── INIT ──
+// INIT
 const albumId = getAlbumIdFromUrl();
 if (albumId) {
   showGallery(albumId);
